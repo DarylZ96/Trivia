@@ -1,0 +1,16 @@
+PODS:
+  - HTMLString (4.0.2)
+
+DEPENDENCIES:
+  - HTMLString (~> 4.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - HTMLString
+
+SPEC CHECKSUMS:
+  HTMLString: d346ba551d1b7e687190c948ec0c2ddaf4057544
+
+PODFILE CHECKSUM: ef610f68a0b286e56c74c568a1dbd7fa20fddbae
+
+COCOAPODS: 1.5.3

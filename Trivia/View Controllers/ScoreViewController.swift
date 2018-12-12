@@ -101,7 +101,6 @@ class ScoreViewController: UIViewController {
     func updateUI(with highscores: [ScoreBoardItem]) {
         DispatchQueue.main.async {
             self.highscores = highscores
-            print("test")
             self.updateScoreBoard()
 
         }
@@ -110,17 +109,40 @@ class ScoreViewController: UIViewController {
     
     func updateScoreBoard() {
         let sortedHighscores = highscores.sorted(by: >)
-
+        print(highscores.count)
         
-        firstPlace.text = sortedHighscores[0].name
+        if highscores.count == 1 {
+            
+            firstPlace.text = " 1. \(sortedHighscores[0].name)"
+            firstScore.text = "\(sortedHighscores[0].highscore)"
+            
+            secondPlace.isHidden = true
+            secondScore.isHidden = true
+            thirdPlace.isHidden = true
+            thirdScore.isHidden = true
+        }
+        
+        else if highscores.count == 2 {
+            firstPlace.text = " 1. \(sortedHighscores[0].name)"
+            firstScore.text = "\(sortedHighscores[0].highscore)"
+            
+            secondPlace.text = " 2. \(sortedHighscores[1].name)"
+            secondScore.text = "\(sortedHighscores[1].highscore)"
+            
+            thirdPlace.isHidden = true
+            thirdScore.isHidden = true
+        }
+        
+        else {
+        firstPlace.text = " 1. \(sortedHighscores[0].name)"
         firstScore.text = "\(sortedHighscores[0].highscore)"
         
-        secondPlace.text = sortedHighscores[1].name
+        secondPlace.text = " 2. \(sortedHighscores[1].name)"
         secondScore.text = "\(sortedHighscores[1].highscore)"
         
-        thirdPlace.text = sortedHighscores[2].name
+        thirdPlace.text = " 3. \(sortedHighscores[2].name)"
         thirdScore.text = "\(sortedHighscores[2].highscore)"
-        
+        }
         
     }
     
