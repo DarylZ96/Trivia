@@ -6,6 +6,8 @@
 This quizz requests data from the opentdb to select some questions.
 The user will answer 10 questions and submit their score to the server. Afterwards, the scoreboard presents the top 3 players.
 
+![Launchscreen](doc/Launchscreen.png)
+
 ![Start](doc/Start.png)
 
 ![StartL](doc/StartL.png)
