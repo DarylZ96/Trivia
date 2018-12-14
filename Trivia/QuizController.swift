@@ -40,9 +40,7 @@ class QuizController {
         var request = URLRequest(url: highscoreURL)
         request.httpMethod = "POST"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        
-        //        let fdata: [String: Int] = ["score":finalscore]
-        
+
         let postString = "name=\(name)&score=\(score)"
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -83,26 +81,6 @@ class QuizController {
     
 
 }
-    
-    
-    
-    
-    //testing
-    
-//    func fetchCategories(completion: @escaping ([String]?) -> Void) {
-//        let url = baseURL!
-//        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-//            if let data = data,
-//                let jsonDictionary = try? JSONSerialization.jsonObject(with: data) as? [String:Any],
-//                let categories = jsonDictionary?["categories"] as? [String] {
-//                completion(categories)
-//            } else {
-//                completion(nil)
-//            }
-//        }
-//        task.resume()
-//    }
-//
-//
+
 
 }

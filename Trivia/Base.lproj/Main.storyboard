@@ -140,17 +140,23 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="AIp-TF-zi4">
-                                <rect key="frame" x="16" y="635" width="343" height="2"/>
-                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hK-hB-M2F">
+                                <rect key="frame" x="209" y="657" width="150" height="0.0"/>
+                                <color key="backgroundColor" red="0.33333334329999997" green="0.093562653209999999" blue="0.064968158679999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="m9k-yB-w8W"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.59391191710000002" green="0.078884947720000001" blue="0.035763685830000003" alpha="0.88344520250000003" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="AIp-TF-zi4" firstAttribute="leading" secondItem="rQg-sA-QEs" secondAttribute="leadingMargin" id="47n-rb-oXp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5hK-hB-M2F" secondAttribute="trailing" id="Gug-hO-fKn"/>
                             <constraint firstItem="MZR-TR-z58" firstAttribute="leading" secondItem="rQg-sA-QEs" secondAttribute="leadingMargin" id="H57-5X-d9E"/>
                             <constraint firstItem="MZR-TR-z58" firstAttribute="top" secondItem="bYv-K1-Er7" secondAttribute="top" constant="10" id="KCY-bu-grA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="AIp-TF-zi4" secondAttribute="trailing" id="d9j-yV-V5F"/>
-                            <constraint firstItem="bYv-K1-Er7" firstAttribute="bottom" secondItem="AIp-TF-zi4" secondAttribute="bottom" constant="30" id="dPr-ly-w0z"/>
+                            <constraint firstItem="bYv-K1-Er7" firstAttribute="bottom" secondItem="5hK-hB-M2F" secondAttribute="bottom" constant="10" id="KDP-VM-jQg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MZR-TR-z58" secondAttribute="trailing" id="vpq-LV-yhB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bYv-K1-Er7"/>
@@ -159,8 +165,8 @@
                     <connections>
                         <outlet property="firstAnswer" destination="0nx-Iz-4ih" id="lHE-fU-ReO"/>
                         <outlet property="fourthAnswer" destination="blY-uh-ckC" id="1OA-B8-OZg"/>
-                        <outlet property="progressView" destination="AIp-TF-zi4" id="apW-7X-v5f"/>
                         <outlet property="questionLabel" destination="sK5-ue-Las" id="JVT-cQ-0uh"/>
+                        <outlet property="scoreLabel" destination="5hK-hB-M2F" id="xaA-V3-jQD"/>
                         <outlet property="secondAnswer" destination="PWq-Sw-2pQ" id="SKt-kb-RRu"/>
                         <outlet property="thirdAnswer" destination="fNY-K5-Bda" id="7yo-Kw-uQ3"/>
                         <segue destination="AuO-SR-fed" kind="show" identifier="ShowResults" id="MoS-KF-r6Y"/>

@@ -17,7 +17,8 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var secondAnswer: UIButton!
     @IBOutlet weak var thirdAnswer: UIButton!
     @IBOutlet weak var fourthAnswer: UIButton!
-    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var scoreLabel: UILabel!
+    
     
     
     let quizController = QuizController()
@@ -30,6 +31,8 @@ class QuestionViewController: UIViewController {
     var answerchosen = [String]()
     var score :Int = 0
 
+    
+    //fetch questions and save the Json data in a variable
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +56,7 @@ class QuestionViewController: UIViewController {
 
     }
     
+    // collect the answers and merge the correct & incorrect answers in a variable
     func collectAnswers(){
         answers = allquestions[questionIndex].incorrectanswers
         answers.append(allquestions[questionIndex].correctanswer)
@@ -61,6 +65,7 @@ class QuestionViewController: UIViewController {
         
     }
     
+    // pick a random answer
     func pickRandomAnswers() {
         
         var notrandom = answers
@@ -72,6 +77,7 @@ class QuestionViewController: UIViewController {
         updateLabels()
     }
     
+    // set all the labels, including the score label
     func updateLabels() {
         questionLabel.text = allquestions[questionIndex].question.removingHTMLEntities
         firstAnswer.setTitle(randomanswers[0], for: .normal)
@@ -79,10 +85,11 @@ class QuestionViewController: UIViewController {
         thirdAnswer.setTitle(randomanswers[2], for: .normal)
         fourthAnswer.setTitle(randomanswers[3], for: .normal)
         
-        let totalProgress = Float(questionIndex) / Float(allquestions.count)
-        progressView.setProgress(totalProgress, animated: true)
+        scoreLabel.text = "Score: \(score) / \(questionIndex)"
+        
     }
     
+    // increment the questionindex to go to the next question
     func nextQuestion () {
         questionIndex += 1
         
@@ -93,20 +100,11 @@ class QuestionViewController: UIViewController {
         }   else{
             performSegue(withIdentifier: "ShowResults", sender: nil)
         }
-    
-//    func animateButton(button:UIButton) {
-//        UIView.animate(withDuration: 0.2) {
-//            self.button.transform =
-//                CGAffineTransform(scaleX: 3.0, y: 3.0)
-//            self.button.transform =
-//                CGAffineTransform(scaleX: 1.0, y: 1.0)
-//        }
-//        }
-        
-        
+   
         
     }
     
+    // check which answers is chosen and save the users answers
     @IBAction func answerButtonPressed(_ sender: UIButton) {
 
         switch sender {
@@ -151,18 +149,26 @@ class QuestionViewController: UIViewController {
         
     }
     
+    // update the score to provide feedback to the user
     func updateScore() {
         
         if answerchosen[questionIndex] == allquestions[questionIndex].correctanswer {
+            UIView.transition(with: scoreLabel, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                self.scoreLabel.textColor = .green
+            }, completion: nil)
             score += 1
         }
         else {
+            UIView.transition(with: scoreLabel, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                self.scoreLabel.textColor = .red
+            }, completion: nil)
             
         }
         print(score)
         nextQuestion()
     }
     
+    // pass the score and question data to the next view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowResults" {
             let scoreViewController = segue.destination as! ScoreViewController

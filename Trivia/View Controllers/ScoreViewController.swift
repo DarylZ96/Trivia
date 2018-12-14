@@ -36,33 +36,23 @@ class ScoreViewController: UIViewController {
     var highscores: [ScoreBoardItem]!
     
     
+    // display the right stacks
     override func viewDidLoad() {
         super.viewDidLoad()
         ScoreboardStack.isHidden = true
         navigationItem.hidesBackButton = true
         displayScore()
- 
-
-        // Do any additional setup after loading the view.
     }
     
-//    func textFieldShouldReturn(nameField: UITextField) -> Bool {
-//        nameField.resignFirstResponder()
-//        return true
-//    }
-//
-//    func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-//        self.view.endEditing(true)
-//    }
-    
-    
-    let baseURL = URL(string: "https://ide50-darylz96.cs50.io:8080/")!
-    
+    // set the label to present the final score of the user
     func displayScore() {
         scoreLabel.text = "\(finalscore!) / \(questions.count)"
         
     }
     
+    // let the user fill in their name
+    // call the postScore function after username is filled in
+    // call the scoreboard function to display the highscore list
     
     @IBAction func submitTapped(_ sender: Any) {
         
@@ -70,7 +60,10 @@ class ScoreViewController: UIViewController {
             let alert = UIAlertController(title: "Please fill in your name", message: "And find out if you're the real MVP", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true)
-        }
+            }
+        
+        else {
+        
         UIView.animate(withDuration: 0.2) {
             self.submitButton.transform =
                 CGAffineTransform(scaleX: 3.0, y: 3.0)
@@ -81,9 +74,12 @@ class ScoreViewController: UIViewController {
         nameField.endEditing(true)
         
         presentScoreboard()
+        }
 
     }
     
+    // present the scoreboard and hide the other stacks
+    // save all the user scores in a variable
     func presentScoreboard() {
         ScoreStack.isHidden = true
         SubmitStack.isHidden = true
@@ -106,6 +102,10 @@ class ScoreViewController: UIViewController {
         }
         
     }
+    
+    // check how many scores the server contains
+    // present the top 3 scores
+    // hide labels when there are not enough scores available
     
     func updateScoreBoard() {
         let sortedHighscores = highscores.sorted(by: >)

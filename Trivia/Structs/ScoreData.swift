@@ -9,10 +9,6 @@
 import Foundation
 
 
-//struct Highscores: Codable {
-//    let highscores: [ScoreBoardItem]
-//}
-
 struct ScoreBoardItem: Codable {
     let name: String
     let score: String

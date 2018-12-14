@@ -15,7 +15,7 @@ class IntroductionViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    
+    // segue for the done button
     @IBAction func unwindToIntroVC(segue: UIStoryboardSegue) {
 }
 
